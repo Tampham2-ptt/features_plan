@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kế hoạch S.M.A.R.T cho Lập trình viên</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">📌 Kế hoạch S.M.A.R.T cho Lập trình viên</h1>
+
+    <!-- Thông tin chung -->
+    <div class="mb-6">
+      <h2 class="font-semibold text-lg mb-2">I. Thông tin chung</h2>
+      <label class="block mb-2">Tên lập trình viên</label>
+      <input type="text" class="w-full border rounded p-2 mb-4" placeholder="Nhập tên...">
+      <label class="block mb-2">Vị trí</label>
+      <input type="text" class="w-full border rounded p-2 mb-4" placeholder="Nhập vị trí...">
+      <label class="block mb-2">Ngày lập kế hoạch</label>
+      <input type="date" class="w-full border rounded p-2">
+    </div>
+
+    <!-- Kế hoạch hiện tại -->
+    <div class="mb-6">
+      <h2 class="font-semibold text-lg mb-2">II. Kế hoạch hiện tại (0 – 3 tháng)</h2>
+      <table class="w-full border border-collapse">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="border p-2">Specific</th>
+            <th class="border p-2">Measurable</th>
+            <th class="border p-2">Achievable</th>
+            <th class="border p-2">Relevant</th>
+            <th class="border p-2">Time-bound</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Mục tiêu..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Chỉ số đo lường..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Khả thi..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Liên quan..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Thời hạn..."></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Kế hoạch 6 tháng tới -->
+    <div class="mb-6">
+      <h2 class="font-semibold text-lg mb-2">III. Kế hoạch 6 tháng tới (3 – 6 tháng)</h2>
+      <table class="w-full border border-collapse">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="border p-2">Specific</th>
+            <th class="border p-2">Measurable</th>
+            <th class="border p-2">Achievable</th>
+            <th class="border p-2">Relevant</th>
+            <th class="border p-2">Time-bound</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Mục tiêu..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Chỉ số đo lường..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Khả thi..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Liên quan..."></td>
+            <td class="border p-2"><input class="w-full p-1" placeholder="Thời hạn..."></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Rủi ro & giải pháp -->
+    <div class="mb-6">
+      <h2 class="font-semibold text-lg mb-2">IV. Rủi ro & Giải pháp</h2>
+      <textarea class="w-full border rounded p-2 h-24" placeholder="Liệt kê rủi ro và giải pháp..."></textarea>
+    </div>
+
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Lưu kế hoạch</button>
+  </div>
+</body>
+</html>
