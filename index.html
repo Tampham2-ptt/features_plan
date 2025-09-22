@@ -131,7 +131,7 @@
   </textarea>
     </div>
         <div class="flex gap-2 mt-4">
-          <button onclick="saveToTxt6()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Lưu ra file txt</button>
+          <button onclick="saveAllPlans()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Lưu ra file txt</button>
           <input type="file" id="fileInput6" accept=".txt" class="hidden" onchange="loadFromTxt6(event)">
           <button onclick="document.getElementById('fileInput6').click()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Đọc từ file txt</button>
         </div>
@@ -141,88 +141,87 @@
 
   
   <script>
-    // Kế hoạch 6 tháng tới
-    function saveToTxt6() {
-      const rows = document.querySelectorAll('#plan6-tbody tr');
+    function saveAllPlans() {
       let data = [];
-      rows.forEach(row => {
+      // Thông tin chung
+      const name = document.querySelector('input[placeholder="Nhập tên..."]').value.replace(/\n/g, '\\n');
+      const position = document.querySelector('input[placeholder="Nhập vị trí..."]').value.replace(/\n/g, '\\n');
+      const date = document.querySelector('input[type="date"]').value.replace(/\n/g, '\\n');
+      data.push([name, position, date].join('\t'));
+      // Bảng 3 tháng
+      document.querySelectorAll('#plan-tbody tr').forEach(row => {
         let rowData = [];
         row.querySelectorAll('textarea').forEach(textarea => rowData.push(textarea.value.replace(/\n/g, '\\n')));
         data.push(rowData.join('\t'));
       });
+      // Bảng 6 tháng
+      document.querySelectorAll('#plan6-tbody tr').forEach(row => {
+        let rowData = [];
+        row.querySelectorAll('textarea').forEach(textarea => rowData.push(textarea.value.replace(/\n/g, '\\n')));
+        data.push(rowData.join('\t'));
+      });
+      // Rủi ro & giải pháp
+      const risk = document.querySelector('textarea[placeholder="Liệt kê rủi ro và giải pháp..."]').value.replace(/\n/g, '\\n');
+      data.push(risk);
       const blob = new Blob([data.join('\n')], {type: 'text/plain'});
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = 'kehoach_6thang.txt';
+      a.download = 'kehoach_all.txt';
       a.click();
     }
 
-    function loadFromTxt6(event) {
+    function loadAllPlans(event) {
       const file = event.target.files[0];
       if (!file) return;
       const reader = new FileReader();
       reader.onload = function(e) {
         const lines = e.target.result.split(/\r?\n/);
-        const tbody = document.getElementById('plan6-tbody');
-        tbody.innerHTML = '';
-        lines.forEach(line => {
-          if (line.trim() === '') return;
-          const cells = line.split('\t');
+        // Dòng đầu là thông tin chung
+        const info = lines[0] ? lines[0].split('\t') : [];
+        document.querySelector('input[placeholder="Nhập tên..."]').value = (info[0] || '').replace(/\\n/g, '\n');
+        document.querySelector('input[placeholder="Nhập vị trí..."]').value = (info[1] || '').replace(/\\n/g, '\n');
+        document.querySelector('input[type="date"]').value = (info[2] || '').replace(/\\n/g, '\n');
+        // 4 dòng tiếp theo cho bảng 3 tháng, 4 dòng sau cho bảng 6 tháng
+        const tbody1 = document.getElementById('plan-tbody');
+        const tbody2 = document.getElementById('plan6-tbody');
+        tbody1.innerHTML = '';
+        tbody2.innerHTML = '';
+        for (let i = 1; i <= 4; i++) {
+          if (!lines[i]) continue;
+          const cells = lines[i].split('\t');
           const tr = document.createElement('tr');
-          for (let i = 0; i < 5; i++) {
+          for (let j = 0; j < 5; j++) {
             const td = document.createElement('td');
             td.className = 'border p-2';
             const textarea = document.createElement('textarea');
             textarea.className = 'w-full p-1 resize-y';
             textarea.rows = 2;
-            textarea.value = (cells[i] || '').replace(/\\n/g, '\n');
+            textarea.value = (cells[j] || '').replace(/\\n/g, '\n');
             td.appendChild(textarea);
             tr.appendChild(td);
           }
-          tbody.appendChild(tr);
-        });
-      };
-      reader.readAsText(file);
-    }
-    function saveToTxt() {
-      const rows = document.querySelectorAll('#plan-tbody tr');
-      let data = [];
-      rows.forEach(row => {
-        let rowData = [];
-        row.querySelectorAll('textarea').forEach(textarea => rowData.push(textarea.value.replace(/\n/g, '\\n')));
-        data.push(rowData.join('\t'));
-      });
-      const blob = new Blob([data.join('\n')], {type: 'text/plain'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'kehoach.txt';
-      a.click();
-    }
-
-    function loadFromTxt(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const lines = e.target.result.split(/\r?\n/);
-        const tbody = document.getElementById('plan-tbody');
-        tbody.innerHTML = '';
-        lines.forEach(line => {
-          if (line.trim() === '') return;
-          const cells = line.split('\t');
+          tbody1.appendChild(tr);
+        }
+        for (let i = 5; i <= 8; i++) {
+          if (!lines[i]) continue;
+          const cells = lines[i].split('\t');
           const tr = document.createElement('tr');
-          for (let i = 0; i < 5; i++) {
+          for (let j = 0; j < 5; j++) {
             const td = document.createElement('td');
             td.className = 'border p-2';
             const textarea = document.createElement('textarea');
             textarea.className = 'w-full p-1 resize-y';
             textarea.rows = 2;
-            textarea.value = (cells[i] || '').replace(/\\n/g, '\n');
+            textarea.value = (cells[j] || '').replace(/\\n/g, '\n');
             td.appendChild(textarea);
             tr.appendChild(td);
           }
-          tbody.appendChild(tr);
-        });
+          tbody2.appendChild(tr);
+        }
+        // Rủi ro & giải pháp
+        if (lines[9]) {
+          document.querySelector('textarea[placeholder="Liệt kê rủi ro và giải pháp..."]').value = lines[9].replace(/\\n/g, '\n');
+        }
       };
       reader.readAsText(file);
     }
