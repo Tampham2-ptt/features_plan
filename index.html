@@ -7,77 +7,226 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-6">
-  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
+  <div class="w-full bg-white shadow-lg rounded-lg p-4 sm:p-6 lg:p-10 xl:p-12 mx-auto min-h-screen flex flex-col justify-center">
     <h1 class="text-2xl font-bold mb-4 text-center">📌 Kế hoạch S.M.A.R.T cho Lập trình viên</h1>
 
-    <!-- Thông tin chung -->
+  <!-- Thông tin chung -->
     <div class="mb-6">
-      <h2 class="font-semibold text-lg mb-2">I. Thông tin chung</h2>
+  <h2 class="font-semibold text-lg mb-2">I. Thông tin chung</h2>
       <label class="block mb-2">Tên lập trình viên</label>
-      <input type="text" class="w-full border rounded p-2 mb-4" placeholder="Nhập tên...">
-      <label class="block mb-2">Vị trí</label>
-      <input type="text" class="w-full border rounded p-2 mb-4" placeholder="Nhập vị trí...">
-      <label class="block mb-2">Ngày lập kế hoạch</label>
-      <input type="date" class="w-full border rounded p-2">
+      <input type="text" class="w-full border rounded p-2 mb-4" placeholder="Nhập tên..." value="Pham Tien Tam">
+  <label class="block mb-2">Vị trí</label>
+  <input type="text" class="w-full border rounded p-2 mb-4" placeholder="Nhập vị trí..." value="Lập trình viên">
+  <label class="block mb-2">Ngày lập kế hoạch</label>
+  <input type="date" class="w-full border rounded p-2 mb-4" value="2025-09-22">
     </div>
 
     <!-- Kế hoạch hiện tại -->
     <div class="mb-6">
       <h2 class="font-semibold text-lg mb-2">II. Kế hoạch hiện tại (0 – 3 tháng)</h2>
-      <table class="w-full border border-collapse">
-        <thead class="bg-gray-200">
-          <tr>
-            <th class="border p-2">Specific</th>
-            <th class="border p-2">Measurable</th>
-            <th class="border p-2">Achievable</th>
-            <th class="border p-2">Relevant</th>
-            <th class="border p-2">Time-bound</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Mục tiêu..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Chỉ số đo lường..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Khả thi..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Liên quan..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Thời hạn..."></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="overflow-x-auto">
+        <table id="plan-table" class="min-w-full border border-collapse text-sm md:text-base">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="border p-2">Specific</th>
+              <th class="border p-2">Measurable</th>
+              <th class="border p-2">Achievable</th>
+              <th class="border p-2">Relevant</th>
+              <th class="border p-2">Time-bound</th>
+            </tr>
+          </thead>
+          <tbody id="plan-tbody">
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Nâng cao kỹ năng Frontend: ReactJS, VueJS, Angular, Javascript</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Hoàn thành các task/fix bug của dự án Jira theo yêu cầu</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Điều tra tìm ra nguyên nhân các bug của HRM và xử lý(fix bug)</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">apply AI vào các dự án các nhân(học tập)</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2025</textarea></td>
+            </tr>
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Thành thạo React và làm được các task mới có độ phức tạp/độ khó cao.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Làm chủ được Frontend của dự án Jira và các task Frontend của OPMS.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Xử lý các bug phát sinh trong kì tính lương, và xử lý xong trước kì tính lương tiếp theo.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Hoàn thành các bài tập hàng tuần trong khóa đào tạo AI</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2025</textarea></td>
+            </tr>
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Tự học, và làm các task của dự án để nâng cao level.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Cần có thêm thời gian để học thêm kiến thức ngoài thời gian làm việc trên công ty</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Cần thêm sự support từ PM/Techlead (anh Tài) đối với các task phức tạp</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Có thể hoàn thành tốt dưới sự support của Techlead (anh Tài)</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2025</textarea></td>
+            </tr>
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Để có làm được các dự án của NES</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Nâng cao level và hiểu hơn về dự án</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Nâng cao level và nắm rõ workflow của phần HRM</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Hướng dẫn được mọi người trong team apply AI vào project.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2025</textarea></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <div class="flex gap-2 mt-4">
+          <button onclick="saveToTxt()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Lưu ra file txt</button>
+          <input type="file" id="fileInput" accept=".txt" class="hidden" onchange="loadFromTxt(event)">
+          <button onclick="document.getElementById('fileInput').click()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Đọc từ file txt</button>
+        </div> -->
+      </div>
     </div>
 
     <!-- Kế hoạch 6 tháng tới -->
     <div class="mb-6">
       <h2 class="font-semibold text-lg mb-2">III. Kế hoạch 6 tháng tới (3 – 6 tháng)</h2>
-      <table class="w-full border border-collapse">
-        <thead class="bg-gray-200">
-          <tr>
-            <th class="border p-2">Specific</th>
-            <th class="border p-2">Measurable</th>
-            <th class="border p-2">Achievable</th>
-            <th class="border p-2">Relevant</th>
-            <th class="border p-2">Time-bound</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Mục tiêu..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Chỉ số đo lường..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Khả thi..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Liên quan..."></td>
-            <td class="border p-2"><input class="w-full p-1" placeholder="Thời hạn..."></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="overflow-x-auto">
+        <table id="plan6-table" class="min-w-full border border-collapse text-sm md:text-base">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="border p-2">Specific</th>
+              <th class="border p-2">Measurable</th>
+              <th class="border p-2">Achievable</th>
+              <th class="border p-2">Relevant</th>
+              <th class="border p-2">Time-bound</th>
+            </tr>
+          </thead>
+          <tbody id="plan6-tbody">
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Xử lý được frontend cho các con nội bộ của NES đang phụ trách</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Nâng cao level Python/Odoo, tiếp cận odoo 18</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Control được HRM của dự án OPMS</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Apply AI vào các project của NES</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2026</textarea></td>
+            </tr>
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Thành thạo ReactJS, xử lý cơ bản các bug của dự án dùng VueJS, Angular.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Tăng 1 level rank dev, và nâng cao level Python để xử lý được các task khó hơn.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Giảm thiểu tối đa các lỗi trong kì tính lương và không phải xử lý bằng tay.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Cải thiện hiệu suất/thời gian lập trình cho các dự án khi áp dụng AI.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2026</textarea></td>
+            </tr>
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Tự học ngoài giờ, và làm các task của dự án để nâng cao level.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Cần có thêm thời gian để học thêm kiến thức ngoài thời gian làm việc trên công ty</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Cần thêm sự support từ PM/Techlead (anh Tài) đối với các task phức tạp</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Có thể hoàn thành tốt dưới sự support của Techlead (anh Tài)</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2026</textarea></td>
+            </tr>
+            <tr>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Xử lý được các bug mà khách hàng yêu cầu, không cần nhờ nhân sự SDC support</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Nâng cao trình độ</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Giảm effort đi check bug, xử lý dữ liệu.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Cải thiện được hiệu suất, thời gian và bug.</textarea></td>
+              <td class="border p-2"><textarea class="w-full p-1 resize-y" rows="2">Trước 31/12/2026</textarea></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mb-6">
+  <h2 class="font-semibold text-lg mb-2">IV. Rủi ro & Giải pháp</h2>
+  <textarea class="w-full border rounded p-2 h-24 text-xs md:text-base" style="height: 200px;" placeholder="Liệt kê rủi ro và giải pháp...">
+1. Rủi ro: Quá tải công việc từ nhiều dự án.
+   Giải pháp: Ưu tiên công việc, giao tiếp rõ ràng với PM để điều chỉnh khối lượng công việc.
+2. Rủi ro: Thiếu kiến thức về AI và công nghệ mới.
+   Giải pháp: Dành thời gian học tập, tham gia khóa học về AI.
+   3. Rủi ro: Ít có thời gian trong giờ làm việc để tự học các kiến thức mới.
+   Giải pháp: Cần chia effort trong giờ 80% để hoàn thành task và 20% để học kỹ năng mới
+  </textarea>
     </div>
-
-    <!-- Rủi ro & giải pháp -->
-    <div class="mb-6">
-      <h2 class="font-semibold text-lg mb-2">IV. Rủi ro & Giải pháp</h2>
-      <textarea class="w-full border rounded p-2 h-24" placeholder="Liệt kê rủi ro và giải pháp..."></textarea>
+        <div class="flex gap-2 mt-4">
+          <button onclick="saveToTxt6()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Lưu ra file txt</button>
+          <input type="file" id="fileInput6" accept=".txt" class="hidden" onchange="loadFromTxt6(event)">
+          <button onclick="document.getElementById('fileInput6').click()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Đọc từ file txt</button>
+        </div>
+      </div>
     </div>
+    
 
-    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Lưu kế hoạch</button>
+  
+  <script>
+    // Kế hoạch 6 tháng tới
+    function saveToTxt6() {
+      const rows = document.querySelectorAll('#plan6-tbody tr');
+      let data = [];
+      rows.forEach(row => {
+        let rowData = [];
+        row.querySelectorAll('textarea').forEach(textarea => rowData.push(textarea.value.replace(/\n/g, '\\n')));
+        data.push(rowData.join('\t'));
+      });
+      const blob = new Blob([data.join('\n')], {type: 'text/plain'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'kehoach_6thang.txt';
+      a.click();
+    }
+
+    function loadFromTxt6(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const lines = e.target.result.split(/\r?\n/);
+        const tbody = document.getElementById('plan6-tbody');
+        tbody.innerHTML = '';
+        lines.forEach(line => {
+          if (line.trim() === '') return;
+          const cells = line.split('\t');
+          const tr = document.createElement('tr');
+          for (let i = 0; i < 5; i++) {
+            const td = document.createElement('td');
+            td.className = 'border p-2';
+            const textarea = document.createElement('textarea');
+            textarea.className = 'w-full p-1 resize-y';
+            textarea.rows = 2;
+            textarea.value = (cells[i] || '').replace(/\\n/g, '\n');
+            td.appendChild(textarea);
+            tr.appendChild(td);
+          }
+          tbody.appendChild(tr);
+        });
+      };
+      reader.readAsText(file);
+    }
+    function saveToTxt() {
+      const rows = document.querySelectorAll('#plan-tbody tr');
+      let data = [];
+      rows.forEach(row => {
+        let rowData = [];
+        row.querySelectorAll('textarea').forEach(textarea => rowData.push(textarea.value.replace(/\n/g, '\\n')));
+        data.push(rowData.join('\t'));
+      });
+      const blob = new Blob([data.join('\n')], {type: 'text/plain'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'kehoach.txt';
+      a.click();
+    }
+
+    function loadFromTxt(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const lines = e.target.result.split(/\r?\n/);
+        const tbody = document.getElementById('plan-tbody');
+        tbody.innerHTML = '';
+        lines.forEach(line => {
+          if (line.trim() === '') return;
+          const cells = line.split('\t');
+          const tr = document.createElement('tr');
+          for (let i = 0; i < 5; i++) {
+            const td = document.createElement('td');
+            td.className = 'border p-2';
+            const textarea = document.createElement('textarea');
+            textarea.className = 'w-full p-1 resize-y';
+            textarea.rows = 2;
+            textarea.value = (cells[i] || '').replace(/\\n/g, '\n');
+            td.appendChild(textarea);
+            tr.appendChild(td);
+          }
+          tbody.appendChild(tr);
+        });
+      };
+      reader.readAsText(file);
+    }
+  </script>
   </div>
 </body>
 </html>
